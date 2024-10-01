@@ -27,5 +27,10 @@ class AnimalTest < ActiveSupport::TestCase
     assert animal.save, "FAIL : Could not save marine animal"
   end
 
-
+  test "should have default values for boolean fields" do
+    animal = Animal.create(name: "Jaguar")
+    assert_not animal.dinosaur, "FAIL : Dinosaur should default to false"
+    assert_not animal.marine, "FAIL : Marine should default to false"
+    assert_not animal.researched, "FAIL : Researched should default to false"
+  end
 end
