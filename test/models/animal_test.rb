@@ -17,6 +17,13 @@ class AnimalTest < ActiveSupport::TestCase
     assert animal.save, "FAIL : Could not save researched animal"
   end
 
+  test "researched scope returns only researched animals" do
+    Animal.create(name: "Blackbuck", researched: true)
+    Animal.create(name: "Cheetah", researched: false)
+    assert_equal 1, Animal.researched.count
+    assert_equal "Cheetah", Animal.researched.first.name
+  end
+
   test "should save valid dinosaur" do
     animal = Animal.new(name: "Camptosaurus", dinosaur: true, marine: false, researched: false)
     assert animal.save, "FAIL : Could not save dinosaur"
