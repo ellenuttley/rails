@@ -21,7 +21,7 @@ class AnimalTest < ActiveSupport::TestCase
     Animal.create(name: "Blackbuck", researched: true)
     Animal.create(name: "Cheetah", researched: false)
     assert_equal 1, Animal.researched.count
-    assert_equal "Cheetah", Animal.researched.first.name
+    assert_equal "Blackbuck", Animal.researched.first.name
   end
 
   test "should save valid dinosaur" do

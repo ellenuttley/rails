@@ -3,4 +3,5 @@ class Animal < ApplicationRecord
 
   scope :dinosaurs, -> { where(dinosaur: true) }
   scope :marine, -> { where(marine: true) }
+  scope :researched, -> { where(researched: true) }
 end
