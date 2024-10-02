@@ -54,4 +54,9 @@ class AnimalTest < ActiveSupport::TestCase
     assert_not animal.marine, "FAIL : Marine should default to false"
     assert_not animal.researched, "FAIL : Researched should default to false"
   end
+
+  test "capitalize name before save" do
+    animal = Animal.create(name: "giraffe")
+    assert_equal "Giraffe", animal.reload.name
+  end
 end
