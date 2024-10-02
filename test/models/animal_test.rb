@@ -22,6 +22,13 @@ class AnimalTest < ActiveSupport::TestCase
     assert animal.save, "FAIL : Could not save dinosaur"
   end
 
+  test "dinosaurs scope returns only dinosaur animals" do
+    Animal.create(name: "Gallimimus", dinosaur: true)
+    Animal.create(name: "Ostrich", dinosaur: false)
+    assert_equal 1, Animal.dinosaurs.count
+    assert_equal "Gallimimus", Animal.dinosaurs.first.name
+  end
+
   test "should save valid marine animal" do
     animal = Animal.new(name: "Orca", dinosaur: false, marine: true, researched: false)
     assert animal.save, "FAIL : Could not save marine animal"
