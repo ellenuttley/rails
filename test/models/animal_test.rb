@@ -34,6 +34,13 @@ class AnimalTest < ActiveSupport::TestCase
     assert animal.save, "FAIL : Could not save marine animal"
   end
 
+  test "marine scope returns only marine animals" do
+    Animal.create(name: "Narwhal", marine: true)
+    Animal.create(name: "Reindeer", marine: false)
+    assert_equal 1, Animal.marine.count
+    assert_equal "Narwhal", Animal.marine.first.name
+  end 
+
   test "should have default values for boolean fields" do
     animal = Animal.create(name: "Jaguar")
     assert_not animal.dinosaur, "FAIL : Dinosaur should default to false"
