@@ -1,6 +1,11 @@
 require "test_helper"
 
 class AnimalTest < ActiveSupport::TestCase
+  test "factory creates a valid animal" do
+    animal = FactoryBot.build(:animal)
+    assert animal.valid?
+  end
+  
   test "should not save animal without name" do
     animal = Animal.new
     assert_not animal.save, "FAIL : Animal saved without a name"
