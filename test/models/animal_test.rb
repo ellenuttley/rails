@@ -34,6 +34,11 @@ class AnimalTest < ActiveSupport::TestCase
     assert_equal "Blackbuck", Animal.researched.first.name
   end
 
+  test "factory creates dinosaurs" do
+    animal = FactoryBot.create(:animal, :dinosaur)
+    assert animal.dinosaur?
+  end
+
   test "should save valid dinosaur" do
     animal = Animal.new(name: "Camptosaurus", dinosaur: true, marine: false, researched: false)
     assert animal.save, "FAIL : Could not save dinosaur"
