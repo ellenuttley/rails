@@ -35,8 +35,11 @@ class AnimalTest < ActiveSupport::TestCase
   end
 
   test "factory creates dinosaurs" do
-    animal = FactoryBot.create(:animal, :dinosaur)
-    assert animal.dinosaur?
+    animal = FactoryBot.create(:animal)
+    assert_not animal.dinosaur?, "Animal should not be a dinosaur by default"
+  
+    dinosaur = FactoryBot.create(:animal, :dinosaur)
+    assert dinosaur.dinosaur?, "Animal should be a dinosaur when :dinosaur trait is used"
   end
 
   test "should save valid dinosaur" do
