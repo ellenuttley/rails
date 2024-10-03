@@ -17,4 +17,10 @@ class TerrainTest < ActiveSupport::TestCase
     assert_not terrain.valid?
     assert_includes terrain.errors[:price], "can't be blank"
   end
+
+  test "price must be non-negative" do
+    terrain = build(:terrain, price: -10)
+    assert_not terrain.valid?
+    assert_includes terrain.errors[:price], "must be greater than or equal to 0"
+  end
 end
