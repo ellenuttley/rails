@@ -5,7 +5,7 @@ class AnimalTest < ActiveSupport::TestCase
     animal = FactoryBot.build(:animal)
     assert animal.valid?
   end
-  
+
   test "should not save animal without name" do
     animal = Animal.new
     assert_not animal.save, "FAIL : Animal saved without a name"
@@ -17,6 +17,11 @@ class AnimalTest < ActiveSupport::TestCase
     assert_not animal.save, "FAIL : Animal saved with duplicate name"
   end
 
+  test "factory creates researched animals" do
+    animal = FactoryBot.create(:animal, :researched)
+    assert animal.researched?
+  end
+  
   test "should save valid researched animal" do
     animal = Animal.new(name: "Okapi", dinosaur: false, marine: false, researched: true)
     assert animal.save, "FAIL : Could not save researched animal"
