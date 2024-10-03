@@ -12,5 +12,9 @@ FactoryBot.define do
     trait :dinosaur do
       dinosaur { true }
     end
+
+    trait :marine do
+      marine { true }
+    end
   end
 end
