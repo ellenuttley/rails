@@ -8,5 +8,9 @@ FactoryBot.define do
     trait :researched do
       researched { true }
     end
+
+    trait :dinosaur do
+      dinosaur { true }
+    end
   end
 end
