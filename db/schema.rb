@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_30_231203) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_03_201229) do
+  create_table "animal_terrains", force: :cascade do |t|
+    t.integer "animal_id", null: false
+    t.integer "terrain_id", null: false
+    t.integer "percentage"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["animal_id"], name: "index_animal_terrains_on_animal_id"
+    t.index ["terrain_id"], name: "index_animal_terrains_on_terrain_id"
+  end
+
   create_table "animals", force: :cascade do |t|
     t.string "name", null: false
     t.boolean "dinosaur", default: false
@@ -20,4 +30,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_30_231203) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "terrains", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "animal_terrains", "animals"
+  add_foreign_key "animal_terrains", "terrains"
 end
