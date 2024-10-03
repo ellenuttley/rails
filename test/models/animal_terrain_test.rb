@@ -1,7 +1,8 @@
 require "test_helper"
 
 class AnimalTerrainTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  setup do
+    @animal = create(:animal)
+    @terrain = create(:terrain)
+  end
 end

@@ -2,6 +2,6 @@ FactoryBot.define do
   factory :animal_terrain do
     animal { nil }
     terrain { nil }
-    percentage { 1 }
+    percentage { 50 }
   end
 end
