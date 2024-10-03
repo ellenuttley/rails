@@ -52,6 +52,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
   gem 'factory_bot_rails'
   gem "hotwire-livereload"
+  gem 'rails-controller-testing'
 end
 
 group :development do
