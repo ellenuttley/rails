@@ -18,8 +18,11 @@ class AnimalTest < ActiveSupport::TestCase
   end
 
   test "factory creates researched animals" do
-    animal = FactoryBot.create(:animal, :researched)
-    assert animal.researched?
+    animal = FactoryBot.create(:animal)
+    assert_not animal.researched?, "Animal should not be researched by default"
+  
+    researched_animal = FactoryBot.create(:animal, :researched)
+    assert researched_animal.researched?, "Animal should be researched when :researched trait is used"
   end
   
   test "should save valid researched animal" do
