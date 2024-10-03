@@ -6,5 +6,4 @@ class AnimalsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_not_nil @controller.instance_variable_get('@animals')
   end
-
 end
