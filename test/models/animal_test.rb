@@ -57,6 +57,14 @@ class AnimalTest < ActiveSupport::TestCase
     assert_equal "Gallimimus", Animal.dinosaurs.first.name
   end
 
+  test "factory creates marine animals" do
+    animal = FactoryBot.create(:animal)
+    assert_not animal.marine?, "Animal should not be marine by default"
+  
+    marine_animal = FactoryBot.create(:animal, :marine)
+    assert marine_animal.marine?, "Animal should be marine when :marine trait is used"
+  end
+  
   test "should save valid marine animal" do
     animal = Animal.new(name: "Orca", dinosaur: false, marine: true, researched: false)
     assert animal.save, "FAIL : Could not save marine animal"
