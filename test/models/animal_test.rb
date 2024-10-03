@@ -84,6 +84,12 @@ class AnimalTest < ActiveSupport::TestCase
     assert_not animal.researched, "FAIL : Researched should default to false"
   end
 
+  test "should not save animal that is both marine and dinosaur" do
+    animal = build(:animal, name: "Invalid Creature", marine: true, dinosaur: true)
+    assert_not animal.save, "FAIL : Saved an animal that is both marine and dinosaur"
+    assert_includes animal.errors.full_messages, "Cannot be both marine and dinosaur"
+  end
+
   test "capitalize name before save" do
     animal = create(:animal, name:"giraffe")
     assert_equal "Giraffe", animal.reload.name
