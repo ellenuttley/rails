@@ -1,4 +1,7 @@
 class Animal < ApplicationRecord
+  has_many :animal_terrains
+  has_many :terrains, through: :animal_terrains
+  
   validate :cannot_be_marine_and_dinosaur
   validates :name, presence: true, uniqueness: true
 
