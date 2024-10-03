@@ -4,6 +4,9 @@ FactoryBot.define do
     dinosaur { false }
     marine { false }
     researched { false }
-    
+
+    trait :researched do
+      researched { true }
+    end
   end
 end
