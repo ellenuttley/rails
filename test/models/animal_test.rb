@@ -110,4 +110,14 @@ class AnimalTest < ActiveSupport::TestCase
     end
   end
 
+  test "does not duplicate terrains when updating percentages" do
+    create(:animal_terrain, animal: @animal, terrain: @terrain1)
+
+    assert_no_difference 'AnimalTerrain.count' do
+      @animal.animal_terrains.find_or_create_by(terrain: @terrain1).update(percentage: 60)
+    end
+  end
+    
+
+
 end
