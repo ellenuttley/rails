@@ -117,7 +117,11 @@ class AnimalTest < ActiveSupport::TestCase
       @animal.animal_terrains.find_or_create_by(terrain: @terrain1).update(percentage: 60)
     end
   end
-    
 
-
+  test "allows adding multiple terrains per animal" do
+    assert_difference 'AnimalTerrain.count', 2 do
+      create(:animal_terrain, animal: @animal, terrain: @terrain1)
+      create(:animal_terrain, animal: @animal, terrain: @terrain2)
+    end
+  end
 end
