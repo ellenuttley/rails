@@ -94,4 +94,10 @@ class AnimalTest < ActiveSupport::TestCase
     animal = create(:animal, name:"giraffe")
     assert_equal "Giraffe", animal.reload.name
   end
+
+  test "should not save terrain with duplicate name" do
+    create(:terrain, name: "Snow")
+    terrain = build(:terrain, name: "Snow")
+    assert_not terrain.save, "FAIL : Terrain saved with duplicate name"
+  end
 end
