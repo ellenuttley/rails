@@ -142,3 +142,105 @@ terrains = [
 terrains.each { |t| Terrain.find_or_create_by!(name: t[:name], price: t[:price]) }
 
 end
+
+# Create animals with their terrains
+# animals_with_terrains = [
+#   {
+#     name: "Gray Wolf",
+#     terrains: [
+#       { name: "Grass", percentage: 25 },
+#       { name: "Fresh Water", percentage: 5 },
+#       { name: "Deciduous Floor", percentage: 20 },
+#       { name: "Coniferous Floor", percentage: 50 }
+#     ]
+#   },
+#   {
+#     name: "Grizzly Bear",
+#     terrains: [
+#       { name: "Fresh Water", percentage: 10 },
+#       { name: "Deciduous Floor", percentage: 30 },
+#       { name: "Coniferous Floor", percentage: 60 }
+#     ]
+#   },
+#   {
+#     name: "Siberian Tiger",
+#     terrains: [
+#       { name: "Grey Stone", percentage: 15 },
+#       { name: "Snow", percentage: 40 },
+#       { name: "Fresh Water", percentage: 5 },
+#       { name: "Coniferous Floor", percentage: 40 }
+#     ]
+#   },
+#   {
+#     name: "Black Bear",
+#     terrains: [
+#       { name: "Grass", percentage: 5 },
+#       { name: "Fresh Water", percentage: 5 },
+#       { name: "Deciduous Floor", percentage: 60 },
+#       { name: "Coniferous Floor", percentage: 30 }
+#     ]
+#   },
+#   {
+#     name: "Moose",
+#     terrains: [
+#       { name: "Grass", percentage: 20 },
+#       { name: "Fresh Water", percentage: 10 },
+#       { name: "Deciduous Floor", percentage: 50 },
+#       { name: "Coniferous Floor", percentage: 20 }
+#     ]
+#   },
+#   {
+#     name: "Unicorn",
+#     terrains: [
+#       { name: "Grass", percentage: 10 },
+#       { name: "Fresh Water", percentage: 10 },
+#       { name: "Deciduous Floor", percentage: 80 }
+#     ]
+#   },
+#   {
+#     name: "Dromedary Camel",
+#     terrains: [
+#       { name: "Sand", percentage: 88 },
+#       { name: "Dirt", percentage: 10 },
+#       { name: "Fresh Water", percentage: 2 }
+#     ]
+#   },
+#   {
+#     name: "Gemsbok",
+#     terrains: [
+#       { name: "Savannah Grass", percentage: 15 },
+#       { name: "Sand", percentage: 70 },
+#       { name: "Dirt", percentage: 10 },
+#       { name: "Fresh Water", percentage: 5 }
+#     ]
+#   },
+#   {
+#     name: "American Bison",
+#     terrains: [
+#       { name: "Grass", percentage: 95 },
+#       { name: "Fresh Water", percentage: 5 }
+#     ]
+#   },
+#   {
+#     name: "American Bighorn Sheep",
+#     terrains: [
+#       { name: "Grass", percentage: 5 },
+#       { name: "Brown Stone", percentage: 70 },
+#       { name: "Grey Stone", percentage: 20 },
+#       { name: "Fresh Water", percentage: 5 }
+#     ]
+#   }
+# ]
+
+# animals_with_terrains.each do |animal_data|
+#   animal = Animal.find_or_create_by!(name: animal_data[:name])
+  
+#   animal_data[:terrains].each do |terrain_data|
+#     terrain = Terrain.find_by!(name: terrain_data[:name])
+#     AnimalTerrain.find_or_create_by!(
+#       animal: animal,
+#       terrain: terrain,
+#       percentage: terrain_data[:percentage]
+#     )
+#   end
+# end
