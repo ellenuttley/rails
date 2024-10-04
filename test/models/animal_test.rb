@@ -100,4 +100,9 @@ class AnimalTest < ActiveSupport::TestCase
     terrain = build(:terrain, name: "Snow")
     assert_not terrain.save, "FAIL : Terrain saved with duplicate name"
   end
+
+  test "capitalize name before save" do
+    terrain = create(:terrain, name: "sand")
+    assert_equal "Sand", terrain.reload.name
+  end
 end
