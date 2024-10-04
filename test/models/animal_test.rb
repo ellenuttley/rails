@@ -125,11 +125,10 @@ class AnimalTest < ActiveSupport::TestCase
     end
   end
 
-  # test "prevents total terrain percentage from exceeding 100" do
-  #   create(:animal_terrain, animal: @animal, terrain: @terrain1, percentage: 60)
-
-  #   assert_raises(ActiveRecord::RecordInvalid) do
-  #     create(:animal_terrain, animal: @animal, terrain: @terrain2, percentage: 50)
-  #   end
-  # end
+  test "ensures total terrain percentage does not exceed 100%" do
+    @animal.add_terrain(@terrain1, 60)
+    @animal.add_terrain(@terrain2, 50)
+    
+    assert_operator @animal.animal_terrains.sum(:percentage), :<=, 100
+  end
 end
