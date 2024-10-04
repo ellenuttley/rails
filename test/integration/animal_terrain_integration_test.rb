@@ -11,6 +11,17 @@ class AnimalTerrainIntegrationTest < ActionDispatch::IntegrationTest
         assert_equal 0, @terrain1.animals.count
     end
 
+    test "adding terrains to an animal" do
+        assert_difference 'AnimalTerrain.count', 2 do
+          @animal.add_terrain(@terrain1, 60)
+          @animal.add_terrain(@terrain2, 40)
+        end
+    
+        assert_equal 2, @animal.terrains.count
+        assert_includes @animal.terrains, @terrain1
+        assert_includes @animal.terrains, @terrain2
+      end
+
 
     
     
