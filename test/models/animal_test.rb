@@ -99,13 +99,13 @@ class AnimalTest < ActiveSupport::TestCase
   def setup
     @animal = create(:animal)
     @terrain1 = create(:terrain, name: 'Grass')
-    @terrain2 = create(:terrain, name: 'Water')
+    @terrain2 = create(:terrain, name: 'Snow')
   end
 
   test "adds terrains only once" do
     assert_difference 'AnimalTerrain.count', 1 do
       2.times do
-        create(:animal_terrain, animal: @animal, terrain: @terrain1)
+        @animal.add_terrain(@terrain1, 50)
       end
     end
   end

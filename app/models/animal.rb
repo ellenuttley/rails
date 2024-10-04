@@ -11,6 +11,10 @@ class Animal < ApplicationRecord
   scope :marine, -> { where(marine: true) }
   scope :researched, -> { where(researched: true) }
 
+  def add_terrain(terrain, percentage)
+    AnimalTerrain.create_or_update(animal: self, terrain: terrain, percentage: percentage)
+  end
+
   private
   def capitalize_name
     self.name = name.titleize if name.present?
