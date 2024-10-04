@@ -9,6 +9,14 @@
         <%= animal.marine ? 'Marine' : 'Not Marine' %> |
         <%= animal.researched ? 'Researched' : 'Not Researched' %>
       </p>
+      <% if animal.animal_terrains.any? %>
+        <h3 class="text-lg font-semibold mt-2">Terrains:</h3>
+        <ul class="list-disc list-inside">
+          <% animal.animal_terrains.each do |animal_terrain| %>
+            <li><%= animal_terrain.terrain.name %>: <%= animal_terrain.percentage %>%</li>
+          <% end %>
+        </ul>
+      <% end %>
     </div>
   <% end %>
 </div>
