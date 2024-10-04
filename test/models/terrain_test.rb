@@ -23,4 +23,6 @@ class TerrainTest < ActiveSupport::TestCase
     assert_not terrain.valid?
     assert_includes terrain.errors[:price], "must be greater than or equal to 0"
   end
+
+  
 end

@@ -28,4 +28,9 @@ class AnimalTerrainTest < ActiveSupport::TestCase
     assert_not animal_terrain.valid?
     assert_includes animal_terrain.errors[:percentage], "must be greater than or equal to 0"
   end
+
+  test "percentage can be 0" do
+    animal_terrain = build(:animal_terrain, animal: @animal, terrain: @terrain, percentage: 0)
+    assert animal_terrain.valid?
+  end
 end
