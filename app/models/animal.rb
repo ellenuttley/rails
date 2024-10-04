@@ -3,6 +3,7 @@ class Animal < ApplicationRecord
   has_many :terrains, through: :animal_terrains
   
   validate :cannot_be_marine_and_dinosaur
+  validate :total_terrain_percentage_cannot_exceed_100
   validates :name, presence: true, uniqueness: true
 
   before_save :capitalize_name
@@ -22,7 +23,14 @@ class Animal < ApplicationRecord
 
   def cannot_be_marine_and_dinosaur
     if marine && dinosaur
-      errors.add(:base, "Cannot be both marine and dinosaur")
+      errors.add(:base, "ERROR : Animal cannot be both marine and dinosaur")
+    end
+  end
+
+  def total_terrain_percentage_cannot_exceed_100
+    total_percentage = animal_terrains.sum(:percentage)
+    if total_percentage > 100
+      errors.add(:base, "Total terrain percentage cannot exceed 100%")
     end
   end
 end
