@@ -123,4 +123,22 @@ animals_to_add = [
 
 animals_to_add.each do |animal_data|
   Animal.create(animal_data) unless Animal.exists?(name: animal_data[:name])
+
+terrains = [
+  { name: 'Grass', price: 40 },
+  { name: 'Savannah Grass', price: 70 },
+  { name: 'Sand', price: 30 },
+  { name: 'Dirt', price: 20 },
+  { name: 'Rainforest Floor', price: 50 },
+  { name: 'Brown Stone', price: 60 },
+  { name: 'Grey Stone', price: 60 },
+  { name: 'Snow', price: 100 },
+  { name: 'Fresh Water', price: 30 },
+  { name: 'Salt Water', price: 60 },
+  { name: 'Deciduous Floor', price: 80 },
+  { name: 'Coniferous Floor', price: 80 }
+]
+
+terrains.each { |t| Terrain.find_or_create_by!(name: t[:name], price: t[:price]) }
+
 end

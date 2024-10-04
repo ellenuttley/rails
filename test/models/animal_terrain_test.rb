@@ -33,4 +33,15 @@ class AnimalTerrainTest < ActiveSupport::TestCase
     animal_terrain = build(:animal_terrain, animal: @animal, terrain: @terrain, percentage: 0)
     assert animal_terrain.valid?
   end
+
+  test "percentage must be less than or equal to 100" do
+    animal_terrain = build(:animal_terrain, animal: @animal, terrain: @terrain, percentage: 101)
+    assert_not animal_terrain.valid?
+    assert_includes animal_terrain.errors[:percentage], "must be less than or equal to 100"
+  end
+
+  test "percentage can be 100" do
+    animal_terrain = build(:animal_terrain, animal: @animal, terrain: @terrain, percentage: 100)
+    assert animal_terrain.valid?
+  end
 end
