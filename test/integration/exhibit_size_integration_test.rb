@@ -19,4 +19,14 @@ class AnimalTerrainIntegrationTest < ActionDispatch::IntegrationTest
       assert_equal 20, @animal.exhibit_size.size2
       assert_equal 6, @animal.exhibit_size.capacity
     end
+    
+    test "exhibit size validations" do
+      invalid_exhibit_size = ExhibitSize.new(size1: -5, size2: 0, capacity: -1)
+      assert_not invalid_exhibit_size.valid?
+      assert_equal 4, invalid_exhibit_size.errors.count
+      assert_includes invalid_exhibit_size.errors.full_messages, "FAIL : Animal must exist"
+      assert_includes invalid_exhibit_size.errors.full_messages, "FAIL : Size1 must be greater than 0"
+      assert_includes invalid_exhibit_size.errors.full_messages, "FAIL : Size2 must be greater than 0"
+      assert_includes invalid_exhibit_size.errors.full_messages, "FAIL : Capacity must be greater than 0"
+    end
 end
