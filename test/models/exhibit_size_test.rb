@@ -21,6 +21,14 @@ class ExhibitSizeTest < ActiveSupport::TestCase
     assert_not @exhibit_size.save, "FAIL : Saved the exhibit size without capacity"
   end
 
+  test "should not save exhibit size with negative values" do
+    @exhibit_size.size1 = -10
+    assert_not @exhibit_size.save, "FAIL : Saved the exhibit size with negative size"
+  end
+
+  test "should save valid exhibit size" do
+    assert @exhibit_size.save, "FAIL : Could not save a valid exhibit size"
+  end
 
 
 end
