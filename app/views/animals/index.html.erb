@@ -1,13 +1,13 @@
-<h1 class="text-2xl font-bold mb-4">Animals</h1>
+<%# <h1 class="text-2xl font-bold mb-4">Animals</h1> %>
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
   <% @animals.each do |animal| %>
     <div class="bg-white shadow-md rounded-lg p-4">
       <h2 class="text-xl font-semibold"><%= animal.name %></h2>
       <p class="text-gray-600">
-        <%= animal.dinosaur ? 'Dinosaur' : 'Not a Dinosaur' %> |
-        <%= animal.marine ? 'Marine' : 'Not Marine' %> |
-        <%= animal.researched ? 'Researched' : 'Not Researched' %>
+        <%= 'Dinosaur' if animal.dinosaur %>
+        <%= 'Marine ' if animal.marine %>
+        <%= '| Researched' if animal.researched %>
       </p>
       <% if animal.animal_terrains.any? %>
         <h3 class="text-lg font-semibold mt-2">Terrains:</h3>
