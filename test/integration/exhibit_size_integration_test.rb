@@ -29,4 +29,11 @@ class AnimalTerrainIntegrationTest < ActionDispatch::IntegrationTest
       assert_includes invalid_exhibit_size.errors.full_messages, "FAIL : Size2 must be greater than 0"
       assert_includes invalid_exhibit_size.errors.full_messages, "FAIL : Capacity must be greater than 0"
     end
+
+    test "deleting an animal removes its exhibit size association" do
+      assert_difference 'ExhibitSize.count', -1 do
+        @animal.destroy
+      end
+      assert_nil ExhibitSize.find_by(id: @exhibit_size.id)
+    end
 end

@@ -21,9 +21,5 @@ class AnimalTerrainIntegrationTest < ActionDispatch::IntegrationTest
         assert_includes @animal.terrains, @terrain1
         assert_includes @animal.terrains, @terrain2
       end
-
-
-    
-    
   
 end
