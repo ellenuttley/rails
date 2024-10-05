@@ -854,4 +854,27 @@ animals_with_terrains.each do |animal_data|
       percentage: terrain_data[:percentage]
     )
   end
+
+exhibit_sizes = [
+  { animal_name: "Pacific Walrus", size1: 10, size2: 12, capacity: 2 },
+  { animal_name: "Shortfin Mako Shark", size1: 10, size2: 8, capacity: 4 },
+  { animal_name: "Southern Sea Otter", size1: 10, size2: 6, capacity: 3 },
+  { animal_name: "Sperm Whale", size1: 10, size2: 13, capacity: 1 },
+  { animal_name: "Tiger Shark", size1: 10, size2: 8, capacity: 4 },
+  { animal_name: "West Indian Manatee", size1: 10, size2: 4, capacity: 2 }
+]
+
+exhibit_sizes.each do |exhibit_data|
+  animal = Animal.find_by(name: exhibit_data[:animal_name])
+  if animal
+    ExhibitSize.find_or_create_by!(
+      animal: animal,
+      size1: exhibit_data[:size1],
+      size2: exhibit_data[:size2],
+      capacity: exhibit_data[:capacity]
+    )
+  else
+    puts "Animal not found: #{exhibit_data[:animal_name]}"
+  end
+end
 end

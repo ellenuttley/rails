@@ -17,6 +17,11 @@
           <% end %>
         </ul>
       <% end %>
+        <% if animal.exhibit_size %>
+        <h3 class="text-lg font-semibold mt-2">Exhibit Size:</h3>
+        <p>Size: <%= animal.exhibit_size.size1 %> x <%= animal.exhibit_size.size2 %></p>
+        <p>Capacity: <%= animal.exhibit_size.capacity %></p>
+      <% end %>
     </div>
   <% end %>
 </div>
