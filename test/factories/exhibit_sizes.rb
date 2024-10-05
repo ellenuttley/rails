@@ -3,5 +3,6 @@ FactoryBot.define do
     size1 { 10 }
     size2 { 8 }
     capacity { 4 }
+    association :animal
   end
 end
