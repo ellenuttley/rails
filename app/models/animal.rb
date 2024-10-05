@@ -1,6 +1,6 @@
 class Animal < ApplicationRecord
   has_one :exhibit_size, dependent: :destroy
-  has_many :animal_terrains
+  has_many :animal_terrains, dependent: :destroy
   has_many :terrains, through: :animal_terrains
   
   validate :cannot_be_marine_and_dinosaur
