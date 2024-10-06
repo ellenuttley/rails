@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class AnimalTerrainIntegrationTest < ActionDispatch::IntegrationTest
+class ExhibitSizeIntegrationTest < ActionDispatch::IntegrationTest
     setup do
       @animal = create(:animal, name: 'Giraffe')
       @exhibit_size = create(:exhibit_size, animal: @animal, size1: 20, size2: 15, capacity: 5)
@@ -24,10 +24,10 @@ class AnimalTerrainIntegrationTest < ActionDispatch::IntegrationTest
       invalid_exhibit_size = ExhibitSize.new(size1: -5, size2: 0, capacity: -1)
       assert_not invalid_exhibit_size.valid?
       assert_equal 4, invalid_exhibit_size.errors.count
-      assert_includes invalid_exhibit_size.errors.full_messages, "FAIL : Animal must exist"
-      assert_includes invalid_exhibit_size.errors.full_messages, "FAIL : Size1 must be greater than 0"
-      assert_includes invalid_exhibit_size.errors.full_messages, "FAIL : Size2 must be greater than 0"
-      assert_includes invalid_exhibit_size.errors.full_messages, "FAIL : Capacity must be greater than 0"
+      assert_includes invalid_exhibit_size.errors.full_messages, "Animal must exist"
+      assert_includes invalid_exhibit_size.errors.full_messages, "Size1 must be greater than 0"
+      assert_includes invalid_exhibit_size.errors.full_messages, "Size2 must be greater than 0"
+      assert_includes invalid_exhibit_size.errors.full_messages, "Capacity must be greater than 0"
     end
 
     test "deleting an animal removes its exhibit size association" do

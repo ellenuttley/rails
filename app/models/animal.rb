@@ -24,7 +24,7 @@ class Animal < ApplicationRecord
 
   def cannot_be_marine_and_dinosaur
     if marine && dinosaur
-      errors.add(:base, "ERROR : Animal cannot be both marine and dinosaur")
+      errors.add(:base, "Cannot be both marine and dinosaur")
     end
   end
 
